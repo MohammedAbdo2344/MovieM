@@ -2,7 +2,7 @@ import React from 'react';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import logo from "../img/popCorn.png"
-import { Tab, Tabs, Typography } from '@mui/material';
+import { Tab, Tabs } from '@mui/material';
 import HomeIcon from '@mui/icons-material/Home';
 import WhatshotIcon from '@mui/icons-material/Whatshot';
 import LocalMoviesIcon from '@mui/icons-material/LocalMovies';
@@ -13,6 +13,7 @@ import InputBase from '@mui/material/InputBase';
 import Button from '@mui/material/Button';
 import LoginIcon from '@mui/icons-material/Login';
 import PersonAddIcon from '@mui/icons-material/PersonAdd';
+import { NavLink } from 'react-router-dom';
 
 
 const Search = styled('div')(({ theme }) => ({
@@ -62,10 +63,10 @@ const Header = () => {
                 <Toolbar>
                     <img src={logo} /><h1> MovieM </h1>
                     <Tabs sx={{ marginLeft: "50px" }} textColor='inherit' >
-                        <Tab sx={{ fontSize: "20px" }} icon={<HomeIcon />} iconPosition='start' label="Home" />
-                        <Tab sx={{ fontSize: "20px" }} icon={<WhatshotIcon />} iconPosition='start' label="Trending" />
-                        <Tab sx={{ fontSize: "20px" }} icon={<LocalMoviesIcon />} iconPosition='start' label="Movies" />
-                        <Tab sx={{ fontSize: "20px" }} icon={<LiveTvIcon />} iconPosition='start' label="Series" />
+                    <NavLink className="navLink" to="/"><Tab sx={{ fontSize: "20px" }} icon={<HomeIcon />} iconPosition='start' label="Home" /></NavLink>
+                    <NavLink className="navLink" to="/trending"><Tab sx={{ fontSize: "20px" }} icon={<WhatshotIcon />} iconPosition='start' label="Trending" /></NavLink>
+                    <NavLink className="navLink" to="/movies"><Tab sx={{ fontSize: "20px" }} icon={<LocalMoviesIcon />} iconPosition='start' label="Movies" /></NavLink>
+                    <NavLink className="navLink" to="/series"><Tab sx={{ fontSize: "20px" }} icon={<LiveTvIcon />} iconPosition='start' label="Series" /></NavLink>
                     </Tabs>
                     <Search>
                         <SearchIconWrapper>
@@ -76,8 +77,8 @@ const Header = () => {
                             inputProps={{ 'aria-label': 'search' }}
                         />
                     </Search>
-                    <Button startIcon={<LoginIcon />} sx={{ color: "white", marginLeft: "auto" }} variant="text">Login</Button>
-                    <Button startIcon={<PersonAddIcon />} sx={{ color: "white", }} variant="text">Sign up</Button>
+                    <Button href='/login' startIcon={<LoginIcon />} sx={{ color: "white", marginLeft: "auto" }} variant="text">Login</Button>
+                    <Button href='/register' startIcon={<PersonAddIcon />} sx={{ color: "white", }} variant="text">Register</Button>
                 </Toolbar>
             </AppBar>
         </React.Fragment>
@@ -85,4 +86,3 @@ const Header = () => {
 }
 
 export default Header;
-
