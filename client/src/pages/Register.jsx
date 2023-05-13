@@ -10,6 +10,8 @@ import { useNavigate } from "react-router-dom";
 const Register = () => {
     const [email, setemail] = useState("");
     const [password, setpassword] = useState("");
+    const [hasError, sethasError] = useState(false);
+    const [error, setError] = useState("");
     const navigate = useNavigate();
     return (
         <div>
@@ -25,6 +27,9 @@ const Register = () => {
                         <input required name="password" type="password" placeholder='Password' onChange={(eo) => { setpassword(eo.target.value) }} />
                         {/* <label>Password</label> */}
                     </div>
+                    <div class="user-box">
+                        {hasError && <p>{error}</p>}
+                    </div>
                     <button onClick={(eo) => {
                         eo.preventDefault();
                         createUserWithEmailAndPassword(auth, email, password)
@@ -36,8 +41,23 @@ const Register = () => {
                             })
                             .catch((error) => {
                                 const errorCode = error.code;
-                                const errorMessage = error.message;
                                 // ..
+
+                                sethasError(true);
+                                switch (errorCode) {
+                                    case "auth/weak-password":
+                                        setError("Weak password");
+                                        break;
+                                    case "auth/invalid-email":
+                                        setError("Invalid email");
+                                        break;
+                                    case "auth/too-many-requests":
+                                        setError("Too many requests, please try again later");
+                                        break;
+                                    default:
+                                        setError("Something went wrong");
+                                        break;
+                                }
                             });
                     }}>
                         <span></span>

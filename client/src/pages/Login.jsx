@@ -12,8 +12,8 @@ const Login = () => {
     const [user, loading] = useAuthState(auth);
     const [email, setemail] = useState("");
     const [password, setpassword] = useState("");
-    const [hasError, sethasError] = useState(false);
-    const [error, setError] = useState("");
+   const [error, setError] = useState("");    const [hasError, sethasError] = useState(false);
+ 
     const navigate = useNavigate();
     return (
         <div>
@@ -30,7 +30,7 @@ const Login = () => {
                         {/* <label>Password</label> */}
                     </div>
                     <div class="user-box">
-                        {hasError && <p>E-mail or Password not Valid </p>}
+                        {hasError && <p>{error}</p>}
                     </div>
                     <button onClick={(eo) => {
                         eo.preventDefault();
@@ -44,9 +44,24 @@ const Login = () => {
                             })
                             .catch((error) => {
                                 const errorCode = error.code;
-                                const errorMessage = error.message;
                                 sethasError(true);
-                                // setError(errorMessage);
+                                switch (errorCode) {
+                                    case "auth/user-not-found":
+                                        setError("User not found");
+                                        break;
+                                    case "auth/wrong-password":
+                                        setError("Wrong password");
+                                        break;
+                                    case "auth/invalid-email":
+                                        setError("Invalid email");
+                                        break;
+                                    case "auth/too-many-requests":
+                                        setError("Too many requests, please try again later");
+                                        break;
+                                    default:
+                                        setError("Something went wrong");
+                                        break;
+                                }
                             });
                     }}>
                         <span></span>

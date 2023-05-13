@@ -17,7 +17,7 @@ import PersonAddIcon from '@mui/icons-material/PersonAdd';
 import { NavLink } from 'react-router-dom';
 import { auth } from '../firebase/config';
 import { useAuthState } from "react-firebase-hooks/auth"
-import {  signOut } from "firebase/auth";
+import { signOut } from "firebase/auth";
 
 
 const Search = styled('div')(({ theme }) => ({
@@ -144,15 +144,12 @@ const Header = () => {
                             <span class="navbar-toggler-icon"></span>
                         </button>
                         <div class="collapse navbar-collapse" id="navbarNav">
-
                             <Button href='/login' startIcon={<LoginIcon />} sx={{ color: "Black", marginLeft: "auto", fontSize: "20px" }} variant="text">Login</Button>
                             <Button href='/register' startIcon={<PersonAddIcon />} sx={{ color: "Black", fontSize: "20px" }} variant="text">Register</Button>
                         </div>
                     </div>
-
                 </nav>
             }
-
         </React.Fragment>
     );
 }

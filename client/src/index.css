@@ -23,7 +23,9 @@ main{
   margin-left: 20px;
 }
 
-
+.pls a{
+  text-decoration: none;
+}
 footer {
   position: absolute;
   text-align: center;
