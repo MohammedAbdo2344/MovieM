@@ -26,6 +26,9 @@ main{
 .pls a{
   text-decoration: none;
 }
+.profile{
+  display: block;
+}
 footer {
   position: absolute;
   text-align: center;

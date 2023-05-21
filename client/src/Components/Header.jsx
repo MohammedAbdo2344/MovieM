@@ -16,8 +16,11 @@ import LogoutIcon from '@mui/icons-material/Logout';
 import PersonAddIcon from '@mui/icons-material/PersonAdd';
 import { NavLink } from 'react-router-dom';
 import { auth } from '../firebase/config';
-import { useAuthState } from "react-firebase-hooks/auth"
+import { useAuthState } from "react-firebase-hooks/auth";
 import { signOut } from "firebase/auth";
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import { useNavigate } from "react-router-dom";
+
 
 
 const Search = styled('div')(({ theme }) => ({
@@ -62,6 +65,8 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 const Header = () => {
     const [user, loading, error] = useAuthState(auth);
+    const navigate = useNavigate();
+    console.log(user)
     return (
         <React.Fragment>
             {/* <AppBar>
@@ -130,6 +135,7 @@ const Header = () => {
 
                                 });
                             }} startIcon={<LogoutIcon />} sx={{ color: "Black", marginLeft: "auto", fontSize: "20px" }} variant="text">LogOut</Button>
+                            <AccountCircleIcon onClick={()=>{navigate("/profile")}}></AccountCircleIcon>
                         </div>
                     </div>
 

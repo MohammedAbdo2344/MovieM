@@ -7,23 +7,55 @@ import { Link } from 'react-router-dom';
 
 const Home = () => {
     const [user, loading, error] = useAuthState(auth);
-    
-    return (
-        <div className='Home'>
-            <Header />
-            {user &&
+    if (loading) {
+        return (
+            <div>
+                <Header />
                 <main>
-                    Home Page
+                    <h1>Loading...</h1>
                 </main>
-            }
-            {!user &&
+                <Footer />
+            </div>
+        )
+    }
+    if (!user) {
+        return (
+            <div>
+                <Header />
                 <main>
                     <p className='pls'>Please <Link to="/login">Login</Link> to continue ...❤️</p>
                 </main>
-            }
-            <Footer />
-        </div>
-    );
+                <Footer />
+            </div>
+        )
+    }
+    if (user) {
+        if (!user.emailVerified) {
+            return (
+                <div>
+                    <Header />
+                    <main>
+                        <p>We send you an email to verify your account</p>
+                        <button className='btn btn-danger'>Send Again</button>
+                    </main>
+                    <Footer />
+                </div>
+            );
+        } else {
+            return (
+                <div className='Home'>
+                    <Header />
+                    {user &&
+                        <main>
+                            Home Page
+                        </main>
+                    }
+                    <Footer />
+                </div>
+            );
+        }
+    }
+
 }
 
 export default Home;
