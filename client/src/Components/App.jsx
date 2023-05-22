@@ -7,11 +7,13 @@ import Series from '../pages/Series';
 import Login from '../pages/Login';
 import Register from '../pages/Register';
 import Profile from '../pages/Profile';
+import Erorr404 from '../pages/Erorr404';
 
 const router=createBrowserRouter([
   {
     path:"/",
-    element:<Home/>
+    element:<Home/>,
+    errorElement:<Erorr404/>
   }
   ,
   {

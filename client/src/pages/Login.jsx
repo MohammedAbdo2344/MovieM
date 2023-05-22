@@ -7,7 +7,6 @@ import { auth } from '../firebase/config';
 import { useAuthState } from "react-firebase-hooks/auth"
 import { useNavigate } from "react-router-dom";
 
-
 const Login = () => {
     const [user, loading] = useAuthState(auth);
     const [email, setemail] = useState("");
@@ -95,7 +94,5 @@ const Login = () => {
     } else {
         navigate("/");
     }
-
 }
-
 export default Login;
