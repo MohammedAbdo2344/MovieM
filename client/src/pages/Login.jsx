@@ -11,8 +11,8 @@ const Login = () => {
     const [user, loading] = useAuthState(auth);
     const [email, setemail] = useState("");
     const [password, setpassword] = useState("");
-    const [error, setError] = useState(""); const [hasError, sethasError] = useState(false);
-
+    const [error, setError] = useState("");
+    const [hasError, sethasError] = useState(false);
     const navigate = useNavigate();
     if (loading) {
         return (
@@ -50,9 +50,9 @@ const Login = () => {
                                     // Signed in 
                                     const user = userCredential.user;
                                     // go to Home Page
-                                    if(user.emailVerified==="true"){
+                                    if (user.emailVerified === "true") {
                                         navigate("/");
-                                    }else{
+                                    } else {
                                         setError("Please Verify Your Email");
                                     }
 

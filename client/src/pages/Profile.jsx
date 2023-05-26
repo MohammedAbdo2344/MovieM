@@ -12,7 +12,7 @@ const Profile = () => {
         <div>
             <Header />
             {user &&
-                <main className='profile'>
+                <main className='profile flex'>
                     <p>Name: {user.displayName}</p>
                     <p>Email: {user.email}</p>
                     <p>Creation : <Moment fromNow date={user.metadata.creationTime}></Moment></p>
