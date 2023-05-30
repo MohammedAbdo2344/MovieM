@@ -4,6 +4,8 @@ import Footer from '../Components/Footer';
 import { auth } from '../firebase/config';
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useNavigate } from "react-router-dom";
+import Almatared from '../img/Movies/Almatared.jpg';
+import Shalaby from '../img/Movies/shalaby.jpg';
 
 
 const Movies = () => {
@@ -74,8 +76,37 @@ const Movies = () => {
                 <div>
                     <Header />
                     <main>
-                        <div className='Contant flex'>
-                            <h1>Movies Contant</h1>
+                        <div className='row Contant'>
+                            <div >
+                                <div className="card" style={{ width: "18rem" }}>
+                                    <img src={Almatared} className="card-img-top" alt="..." />
+                                    <div className="card-body">
+                                        <h5 className="card-title">Almatared</h5>
+                                        <a href="#" className="btn btn-primary">
+                                            Go somewhere
+                                        </a>
+                                    </div>
+                                </div>
+                                <div className="card" style={{ width: "18rem" }}>
+                                    <img src={Shalaby} className="card-img-top" alt="..." />
+                                    <div className="card-body">
+                                        <h5 className="card-title">Card title</h5>                                    <a href="#" className="btn btn-primary">
+                                            Go somewhere
+                                        </a>
+                                    </div>
+                                </div>
+                                <div className="card" style={{ width: "18rem" }}>
+                                    <img src="..." className="card-img-top" alt="..." />
+                                    <div className="card-body">
+                                        <h5 className="card-title">Card title</h5>                                    <a href="#" className="btn btn-primary">
+                                            Go somewhere
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
                         </div>
                     </main>
                     <Footer />
