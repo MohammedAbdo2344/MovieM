@@ -6,6 +6,8 @@ import { useAuthState } from "react-firebase-hooks/auth"
 import { Link } from 'react-router-dom';
 import Almatared from '../img/Movies/Almatared.jpg';
 import Shalaby from '../img/Movies/shalaby.jpg';
+import BankElHaz from '../img/Movies/bankEl.jpg';
+import { Button } from '@mui/material';
 
 const Home = () => {
     const [user, loading, error] = useAuthState(auth);
@@ -82,10 +84,58 @@ const Home = () => {
                     {user &&
                         <main>
                             <div className='HomeSlider flex'>
-                               <h1>Home Slider</h1>
+                                <h1>Home Slider</h1>
                             </div>
-                            <div className='Contant flex'>
-                                <h1>Home Contant</h1>
+                            <div>
+                                {/* Options {Filtered Data} */}
+                                <section className='FilteredData'>
+                                    <button className='btnFilter'>Newest First</button>
+                                    <button className='btnFilter' >Oldest First</button>
+                                    <select className='options' >
+                                        <option>All Categories</option>
+                                        <option>Category 1</option>
+                                        <option>Category 2</option>
+                                    </select>
+                                </section>
+                                {/* Show all Movies */}
+                                <section>
+                                    <div className='Movies flex'>
+                                        <div className='Movie'>
+                                            {/* Img of Movie */}
+                                            <img src={Almatared} />
+                                            {/* Title  */}
+                                            <h2>Almatared</h2>
+                                            {/* Rating  */}
+                                            <p>Rating: <span>8.7</span></p>
+                                            {/* Category  */}
+                                            <p>Category: <span>Comedy</span></p>
+                                        </div>
+                                        <div className='Movie'>
+                                            {/* Img of Movie */}
+                                            <img src={Shalaby} />
+                                            {/* Title  */}
+                                            <h2>Shalaby</h2>
+                                            {/* Rating  */}
+                                            <p>Rating: <span>8.7</span></p>
+                                            {/* Category  */}
+                                            <p>Category: <span>Comedy</span></p>
+                                        </div>
+                                        <div className='Movie'>
+                                            {/* Img of Movie */}
+                                            <img src={BankElHaz} />
+                                            {/* Title  */}
+                                            <h2>Bank El Haz</h2>
+                                            {/* Rating  */}
+                                            <p>Rating: <span>8.7</span></p>
+                                            {/* Category  */}
+                                            <p>Category: <span>Comedy</span></p>
+                                        </div>
+                                    </div>
+                                </section>
+                                {/* Add new Movie BTN */}
+                                <section className='MovieBTN'>
+                                    <button className='btn btn-danger'>Add Movie</button>
+                                </section>
                             </div>
                         </main>
                     }

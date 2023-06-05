@@ -5,6 +5,7 @@ import { auth } from '../firebase/config';
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useNavigate } from "react-router-dom";
 import Almatared from '../img/Movies/Almatared.jpg';
+import BankElHaz from '../img/Movies/bankEl.jpg';
 import Shalaby from '../img/Movies/shalaby.jpg';
 
 
@@ -76,37 +77,56 @@ const Movies = () => {
                 <div>
                     <Header />
                     <main>
-                        <div className='row Contant'>
-                            <div >
-                                <div className="card" style={{ width: "18rem" }}>
-                                    <img src={Almatared} className="card-img-top" alt="..." />
-                                    <div className="card-body">
-                                        <h5 className="card-title">Almatared</h5>
-                                        <a href="#" className="btn btn-primary">
-                                            Go somewhere
-                                        </a>
+                        <div>
+                            {/* Options {Filtered Data} */}
+                            <section className='FilteredData'>
+                                <button className='btnFilter'>Newest First</button>
+                                <button className='btnFilter' >Oldest First</button>
+                                <select className='options' >
+                                    <option>All Categories</option>
+                                    <option>Category 1</option>
+                                    <option>Category 2</option>
+                                </select>
+                            </section>
+                            {/* Show all Movies */}
+                            <section>
+                                <div className='Movies flex'>
+                                    <div className='Movie'>
+                                        {/* Img of Movie */}
+                                        <img src={Almatared} />
+                                        {/* Title  */}
+                                        <h2>Almatared</h2>
+                                        {/* Rating  */}
+                                        <p>Rating: <span>8.7</span></p>
+                                        {/* Category  */}
+                                        <p>Category: <span>Comedy</span></p>
+                                    </div>
+                                    <div className='Movie'>
+                                        {/* Img of Movie */}
+                                        <img src={Shalaby} />
+                                        {/* Title  */}
+                                        <h2>Shalaby</h2>
+                                        {/* Rating  */}
+                                        <p>Rating: <span>8.7</span></p>
+                                        {/* Category  */}
+                                        <p>Category: <span>Comedy</span></p>
+                                    </div>
+                                    <div className='Movie'>
+                                        {/* Img of Movie */}
+                                        <img src={BankElHaz} />
+                                        {/* Title  */}
+                                        <h2>Bank El Haz</h2>
+                                        {/* Rating  */}
+                                        <p>Rating: <span>8.7</span></p>
+                                        {/* Category  */}
+                                        <p>Category: <span>Comedy</span></p>
                                     </div>
                                 </div>
-                                <div className="card" style={{ width: "18rem" }}>
-                                    <img src={Shalaby} className="card-img-top" alt="..." />
-                                    <div className="card-body">
-                                        <h5 className="card-title">Card title</h5>                                    <a href="#" className="btn btn-primary">
-                                            Go somewhere
-                                        </a>
-                                    </div>
-                                </div>
-                                <div className="card" style={{ width: "18rem" }}>
-                                    <img src="..." className="card-img-top" alt="..." />
-                                    <div className="card-body">
-                                        <h5 className="card-title">Card title</h5>                                    <a href="#" className="btn btn-primary">
-                                            Go somewhere
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-
-
-
+                            </section>
+                            {/* Add new Movie BTN */}
+                            <section className='MovieBTN'>
+                                <button className='btn btn-danger'>Add Movie</button>
+                            </section>
                         </div>
                     </main>
                     <Footer />
