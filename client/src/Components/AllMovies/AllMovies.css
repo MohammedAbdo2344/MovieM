@@ -1,0 +1,27 @@
+.Movies {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 2rem;
+    text-align: center;
+}
+
+.Movies .Movie {
+    border: 1px solid blue;
+    width: 15%;
+    margin: 15px;
+    width: 250px;
+}
+
+.Movies .Movie img {
+    width: 100%;
+    height: 200px;
+}
+
+.MovieBTN {
+    text-align: center;
+}
+
+.Movies .Movie a {
+    text-decoration: none;
+}

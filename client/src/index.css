@@ -207,28 +207,28 @@ main {
   height: 60px;
 }
 
-.Movies {
+
+
+.inputs-model{
+  display: flex;
+  flex-direction: column;
+}
+.inputs-model input{
+  margin: 5px;
+  padding: 5px 15px;
+  font-size: x-large;
+}
+.buttons-model{
   text-align: center;
 }
-
-.Movies .Movie {
-  border: 1px solid blue;
-  /* display: inline-block; */
-  /* width: 15%; */
-  margin: 15px;
-  width: 250px;
+.buttons-model button{
+  margin: 15px 10px;
 }
-
-.Movies .Movie img {
-  width: 100%;
-  height: 200px;
-}
-
-.MovieBTN {
-  text-align: center;
-}
-
 /* End Home Page */
+
+
+
+
 
 
 /* Ptofile Page */

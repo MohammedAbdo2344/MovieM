@@ -1,16 +1,29 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Header from '../Components/Header';
 import Footer from '../Components/Footer';
-import { auth } from '../firebase/config';
+import { auth, db } from '../firebase/config';
 import { useAuthState } from "react-firebase-hooks/auth"
 import { Link } from 'react-router-dom';
-import Almatared from '../img/Movies/Almatared.jpg';
-import Shalaby from '../img/Movies/shalaby.jpg';
-import BankElHaz from '../img/Movies/bankEl.jpg';
-import { Button } from '@mui/material';
+
+import Model from './Model/Model';
+import { doc, setDoc } from "firebase/firestore";
+import AllMovies from '../Components/AllMovies/AllMovies';
+
 
 const Home = () => {
     const [user, loading, error] = useAuthState(auth);
+    const [showModel, setShowModel] = useState(false);
+    const movieID = new Date().getTime();
+    const [movieName, setMovieName] = useState("");
+    const [movieRating, setMovieRating] = useState("");
+    const [movieCatogery, setMovieCatogery] = useState("");
+
+    const addMovie = () => {
+        setShowModel(true);
+    }
+    const closeModel = () => {
+        setShowModel(false);
+    }
     if (loading) {
         return (
             <div>
@@ -83,6 +96,51 @@ const Home = () => {
                     <Header />
                     {user &&
                         <main>
+                            {showModel &&
+                                <Model closeModel={closeModel}>
+                                    <form>
+                                        <div className='inputs-model'>
+                                            <input
+                                                name='Movie Name'
+                                                type='Text'
+                                                placeholder='Movie Name'
+                                                onChange={(eo) => {
+                                                    setMovieName(eo.target.value);
+                                                }}
+                                            />
+                                            <input
+                                                name='Movie Rating'
+                                                type='Text'
+                                                placeholder='Movie Rating'
+                                                onChange={(eo) => {
+                                                    setMovieRating(eo.target.value);
+                                                }}
+                                            />
+                                            <input
+                                                name='Movie Catogery'
+                                                type='Text'
+                                                placeholder='Movie Catogery'
+                                                onChange={(eo) => {
+                                                    setMovieCatogery(eo.target.value);
+                                                }}
+                                            />
+                                        </div>
+                                        <div className='buttons-model'>
+                                            <button onClick={
+                                                async (eo) => {
+                                                    eo.preventDefault();
+                                                    await setDoc(doc(db, "Movies", `${movieName}`), {
+                                                        Movie_ID: `${movieID}`,
+                                                        Movie_Name: `${movieName}`,
+                                                        Movie_Rating: `${movieRating}`,
+                                                        Movie_Catogery: `${movieCatogery}`
+                                                    });
+                                                }
+                                            } className='btn btn-primary' type='submit'>Submit</button>
+                                        </div>
+                                    </form>
+                                </Model>
+                            }
                             <div className='HomeSlider flex'>
                                 <h1>Home Slider</h1>
                             </div>
@@ -98,43 +156,12 @@ const Home = () => {
                                     </select>
                                 </section>
                                 {/* Show all Movies */}
-                                <section>
-                                    <div className='Movies flex'>
-                                        <div className='Movie'>
-                                            {/* Img of Movie */}
-                                            <img src={Almatared} />
-                                            {/* Title  */}
-                                            <h2>Almatared</h2>
-                                            {/* Rating  */}
-                                            <p>Rating: <span>8.7</span></p>
-                                            {/* Category  */}
-                                            <p>Category: <span>Comedy</span></p>
-                                        </div>
-                                        <div className='Movie'>
-                                            {/* Img of Movie */}
-                                            <img src={Shalaby} />
-                                            {/* Title  */}
-                                            <h2>Shalaby</h2>
-                                            {/* Rating  */}
-                                            <p>Rating: <span>8.7</span></p>
-                                            {/* Category  */}
-                                            <p>Category: <span>Comedy</span></p>
-                                        </div>
-                                        <div className='Movie'>
-                                            {/* Img of Movie */}
-                                            <img src={BankElHaz} />
-                                            {/* Title  */}
-                                            <h2>Bank El Haz</h2>
-                                            {/* Rating  */}
-                                            <p>Rating: <span>8.7</span></p>
-                                            {/* Category  */}
-                                            <p>Category: <span>Comedy</span></p>
-                                        </div>
-                                    </div>
-                                </section>
+                                <AllMovies />
                                 {/* Add new Movie BTN */}
                                 <section className='MovieBTN'>
-                                    <button className='btn btn-danger'>Add Movie</button>
+                                    <button onClick={() => {
+                                        addMovie();
+                                    }} className='btn btn-primary'>Add Movie</button>
                                 </section>
                             </div>
                         </main>

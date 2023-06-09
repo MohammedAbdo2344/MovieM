@@ -1,0 +1,81 @@
+.edit-movie {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 50px;
+
+}
+
+/* ==============================
+1-  Title
+=================================*/
+
+.edit-icon {
+    margin: 10px 20px;
+}
+
+.title {
+    border: none;
+    text-align: center;
+}
+
+/* ==============================
+2-  Sub-Movie
+=================================*/
+.sub-movie {
+    /* border: 2px solid red; */
+    width: 80%;
+    font-size: medium;
+}
+
+.created-complete {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.complete {
+    display: inline-block;
+}
+
+.sub-movie #checkbox {
+    margin-right: 5px;
+    height: 18px;
+    width: 18px;
+    accent-color: teal;
+}
+
+.sub-movie .complete {
+    font-size: 17px;
+    position: relative;
+    bottom: 3px;
+}
+.sub-movie ul{
+    list-style: none;
+    margin-left: -32px;
+}
+.sub-movie .card-info{
+    box-shadow: 0 5px 30px 0 rgb(0 0 0 /15%);
+    background-color: cornsilk;
+    padding: 15px;
+    border-radius: 7px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 11px;
+}
+.sub-movie .card-info .DeleteIcon{
+    margin-bottom: 20px;
+    margin-right: 19px;
+    /* padding-left: 19px; */
+}
+/* ==============================
+3-  Add & Delete BTN
+=================================
+*/
+.buttons{
+    width: 80%;
+    margin-top:20px;
+    justify-content: space-between;
+}
