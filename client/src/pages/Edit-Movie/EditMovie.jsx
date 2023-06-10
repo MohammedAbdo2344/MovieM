@@ -9,6 +9,9 @@ import TitleSection from './TitleSection';
 import { useParams } from 'react-router-dom';
 import SubMovie from './Sub-Movie';
 import Buttons from './Buttons';
+import { doc, updateDoc, deleteField, deleteDoc } from "firebase/firestore";
+import { db } from '../../firebase/config';
+
 
 const EditMovie = ({ MovieInfo }) => {
     const [user, loading, error] = useAuthState(auth);
@@ -16,6 +19,25 @@ const EditMovie = ({ MovieInfo }) => {
     const [showForm, setShowForm] = useState("");
     const addMovie = () => {
         setShowForm("show-add-movie");
+    }
+    const titleInput = async (eo) => {
+        await updateDoc(doc(db, "Movies", id), {
+            Movie_Name: eo.target.value,
+        });
+    }
+    const ratingDelete = async (eo) => {
+        await updateDoc(doc(db, "Movies", id), {
+            Movie_Rating: deleteField()
+        });
+    }
+    const CategeryDelete = async (eo) => {
+        await updateDoc(doc(db, "Movies", id), {
+            Movie_Catogery: deleteField()
+        });
+    }
+    const documentDelete = async (eo) => {
+
+        await deleteDoc(doc(db, "Movies", id));
     }
     let { id } = useParams();
     if (loading) {
@@ -80,11 +102,11 @@ const EditMovie = ({ MovieInfo }) => {
                     <Header />
                     <main className='edit-movie'>
                         {/*Title  */}
-                        <TitleSection id={id} />
+                        <TitleSection id={id} titleInput={titleInput} />
                         {/* Sub-Movie */}
-                        <SubMovie id={id} />
+                        <SubMovie id={id} CategeryDelete={CategeryDelete} ratingDelete={ratingDelete} />
                         {/* Add & Delete BTN */}
-                        <Buttons id={id} />
+                        <Buttons id={id} documentDelete={documentDelete}/>
                     </main>
                     <Footer />
                 </div>

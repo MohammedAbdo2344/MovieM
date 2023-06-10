@@ -79,3 +79,28 @@
     margin-top:20px;
     justify-content: space-between;
 }
+@media (max-width:280px) {
+
+    .Brand {
+      width: 13%;
+      margin-right: 5PX;
+  
+    }
+  }
+  @media (max-width:990px) {
+    .Brand {
+      width: 7%;
+      margin-right: 5PX;
+  
+    }
+  }
+  
+  /* Iphone 12 */
+  @media (max-width:500px) {
+    .Brand {
+      width: 9%;
+      margin-right: 5PX;
+  
+    }
+  }
+  

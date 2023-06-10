@@ -167,7 +167,7 @@ body {}
 /* End Loading */
 main {
   color: #1b1b1b;
-  height: calc(100vh - 128.64px);
+  /* height: calc(100vh - 128.64px); */
   font-size: 30px;
   font-weight: bold;
   line-height: 50px;
@@ -209,21 +209,25 @@ main {
 
 
 
-.inputs-model{
+.inputs-model {
   display: flex;
   flex-direction: column;
 }
-.inputs-model input{
+
+.inputs-model input {
   margin: 5px;
   padding: 5px 15px;
   font-size: x-large;
 }
-.buttons-model{
+
+.buttons-model {
   text-align: center;
 }
-.buttons-model button{
+
+.buttons-model button {
   margin: 15px 10px;
 }
+
 /* End Home Page */
 
 
@@ -235,19 +239,7 @@ main {
 /* End Profile Page */
 
 /* Footer */
-footer {
-  position: absolute;
-  text-align: center;
-  bottom: 0;
-  width: 100%;
-  height: 2.5rem;
-  margin-top: -30px;
-  margin-bottom: -20px;
-}
 
-footer p {
-  color: #ccc;
-}
 
 /* End Footer */
 .slider {
@@ -712,7 +704,7 @@ label {
 
 
 @media (max-width:990px) {
-  img {
+  .Brand {
     width: 7%;
     margin-right: 5PX;
 
@@ -720,8 +712,17 @@ label {
 }
 
 @media (max-width:500px) {
-  img {
+  .Brand {
     width: 9%;
+    margin-right: 5PX;
+
+  }
+}
+
+@media (max-width:280px) {
+
+  .Brand {
+    width: 13%;
     margin-right: 5PX;
 
   }

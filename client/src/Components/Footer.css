@@ -1,0 +1,19 @@
+.myfooter {
+
+    padding: 20px 0;
+    text-align: center;
+    font-size: 18px;
+}
+
+
+.myfooter footer {
+
+    color: darkgrey;
+
+
+}
+
+.myfooter footer .Mylink {
+    text-decoration: none;
+    color: darkgray;
+}
