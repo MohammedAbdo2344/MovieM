@@ -2,10 +2,11 @@ import React, { useState } from 'react';
 import Footer from '../Components/Footer';
 import Header from '../Components/Header';
 import { Link } from 'react-router-dom';
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import {signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from '../firebase/config';
 import { useAuthState } from "react-firebase-hooks/auth"
 import { useNavigate } from "react-router-dom";
+import Loading from '../Components/Loading';
 
 const Login = () => {
     const [user, loading] = useAuthState(auth);
@@ -16,14 +17,11 @@ const Login = () => {
     const navigate = useNavigate();
     if (loading) {
         return (
-            <div>
-                <Header />
-                <main>
-                    <h1>Loading...</h1>
-                </main>
-                <Footer />
-            </div>
+            <Loading />
         )
+    }
+    if (error) {
+        return <h1>Error : <span>{error.message}</span></h1>
     }
     if (!user) {
         return (

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { doc, setDoc } from "firebase/firestore";
-import { auth, db } from '../../firebase/config';
+import { db } from '../../firebase/config';
 
 const AddMovieModel = () => {
     const [movieName, setMovieName] = useState("");

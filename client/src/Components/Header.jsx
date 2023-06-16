@@ -1,8 +1,5 @@
 import React from 'react';
-import AppBar from '@mui/material/AppBar';
-import Toolbar from '@mui/material/Toolbar';
 import logo from "../img/popCorn.png"
-import { Tab, Tabs } from '@mui/material';
 import HomeIcon from '@mui/icons-material/Home';
 import WhatshotIcon from '@mui/icons-material/Whatshot';
 import LocalMoviesIcon from '@mui/icons-material/LocalMovies';
@@ -14,14 +11,11 @@ import Button from '@mui/material/Button';
 import LoginIcon from '@mui/icons-material/Login';
 import LogoutIcon from '@mui/icons-material/Logout';
 import PersonAddIcon from '@mui/icons-material/PersonAdd';
-import { NavLink } from 'react-router-dom';
 import { auth } from '../firebase/config';
 import { useAuthState } from "react-firebase-hooks/auth";
 import { signOut } from "firebase/auth";
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { useNavigate } from "react-router-dom";
-
-
 
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
@@ -64,40 +58,16 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 const Header = () => {
-    const [user, loading, error] = useAuthState(auth);
+    const [user] = useAuthState(auth);
     const navigate = useNavigate();
     console.log(user)
     return (
         <React.Fragment>
-            {/* <AppBar>
-                <Toolbar>
-                    <img src={logo} /><h1> MovieM </h1>
-                    <Tabs className='Tabs' sx={{ marginLeft: "50px" }} textColor='inherit' >
-                        <NavLink className="navLink" to="/"><Tab sx={{ fontSize: "20px" }} icon={<HomeIcon />} iconPosition='start' label="Home" /></NavLink>
-                        <NavLink className="navLink" to="/trending"><Tab sx={{ fontSize: "20px" }} icon={<WhatshotIcon />} iconPosition='start' label="Trending" /></NavLink>
-                        <NavLink className="navLink" to="/movies"><Tab sx={{ fontSize: "20px" }} icon={<LocalMoviesIcon />} iconPosition='start' label="Movies" /></NavLink>
-                        <NavLink className="navLink" to="/series"><Tab sx={{ fontSize: "20px" }} icon={<LiveTvIcon />} iconPosition='start' label="Series" /></NavLink>
-                    </Tabs>
-                    <Search className='Search'>
-                        <SearchIconWrapper>
-                            <SearchIcon />
-                        </SearchIconWrapper>
-                        <StyledInputBase
-                            placeholder="Search…"
-                            inputProps={{ 'aria-label': 'search' }}
-                        />
-                    </Search>
-                    <input type="checkbox" name="" id="toggle" />
-                    <label for="toggle">menu</label>
-                    <Button href='/login' startIcon={<LoginIcon />} sx={{ color: "white", marginLeft: "auto", fontSize: "20px" }} variant="text">Login</Button>
-                    <Button href='/register' startIcon={<PersonAddIcon />} sx={{ color: "white", fontSize: "20px" }} variant="text">Register</Button>
-                </Toolbar>
-            </AppBar> */}
             {/* User  Logged */}
             {user &&
                 <nav class="navbar navbar-expand-lg bg-body-tertiary">
                     <div class="container-fluid">
-                        <img className='Brand' src={logo} /><h1> MovieM </h1>
+                        <img className='Brand' src={logo} alt='Logo' /><h1> MovieM </h1>
                         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="navbar-toggler-icon"></span>
                         </button>
@@ -145,7 +115,7 @@ const Header = () => {
             {!user &&
                 <nav class="navbar navbar-expand-lg bg-body-tertiary">
                     <div class="container-fluid">
-                        <img className='Brand' src={logo} /><h1> MovieM </h1>
+                        <img className='Brand' src={logo} alt='logo'/><h1> MovieM </h1>
                         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="navbar-toggler-icon"></span>
                         </button>

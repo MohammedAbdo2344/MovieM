@@ -79,6 +79,11 @@
     margin-top:20px;
     justify-content: space-between;
 }
+
+/* ==============================
+4-  Media Query
+=================================
+*/
 @media (max-width:280px) {
 
     .Brand {

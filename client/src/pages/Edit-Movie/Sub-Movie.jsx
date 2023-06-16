@@ -1,14 +1,19 @@
 import React from 'react';
-import DeleteIcon from '@mui/icons-material/Delete';
 import { db } from '../../firebase/config';
 import { useDocument } from "react-firebase-hooks/firestore";
 import { doc } from "firebase/firestore";
 import Moment from 'react-moment';
+import Loading from '../../Components/Loading';
 
 const SubMovie = ({ id, ratingDelete, CategeryDelete }) => {
     const [Movies, loading, error] = useDocument(doc(db, "Movies", id));
     if (error) {
         return <h1>Error : <span>{error.message}</span></h1>
+    }
+    if (loading) {
+        return (
+            <Loading />
+        )
     }
     if (Movies) {
         const MovieRating = Movies.data().Movie_Rating;

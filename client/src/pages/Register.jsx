@@ -6,8 +6,7 @@ import { auth } from '../firebase/config';
 import { createUserWithEmailAndPassword, updateProfile, sendEmailVerification } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { useAuthState } from "react-firebase-hooks/auth";
-
-
+import Loading from '../Components/Loading';
 
 const Register = () => {
     const [username, setUsername] = useState("");
@@ -20,14 +19,11 @@ const Register = () => {
 
     if (loading) {
         return (
-            <div>
-                <Header />
-                <main>
-                    <h1>Loading...</h1>
-                </main>
-                <Footer />
-            </div>
+            <Loading />
         )
+    }
+    if (error) {
+        return <h1>Error : <span>{error.message}</span></h1>
     }
     if (user) {
         if (!user.emailVerified) {

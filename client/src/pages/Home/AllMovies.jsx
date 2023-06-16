@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { db } from '../../firebase/config';
 import { Link } from 'react-router-dom';
 import { useCollection } from "react-firebase-hooks/firestore";
 import { collection } from "firebase/firestore";
 import Almatared from '../../img/Movies/Almatared.jpg';
-import './AllMovies.css';
 import Loading from '../../Components/Loading';
+import './AllMovies.css';
 const AllMovies = () => {
     const [Movies, loading, error] = useCollection(collection(db, "Movies"));
     if (error) {
@@ -26,7 +26,7 @@ const AllMovies = () => {
                                 pathname: `/edit_Movie/${item.data().Movie_Name}`,
                             }}>
                                 {/* Img of Movie */}
-                                <img src={Almatared} />
+                                <img src={Almatared} alt='movie_Image'/>
                                 {/* Title  */}
                                 <h2>{item.data().Movie_Name}</h2>
                                 {/* Rating  */}

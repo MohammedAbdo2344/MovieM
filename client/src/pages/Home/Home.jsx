@@ -4,7 +4,6 @@ import Footer from '../../Components/Footer';
 import { auth } from '../../firebase/config';
 import { useAuthState } from "react-firebase-hooks/auth"
 import { Link } from 'react-router-dom';
-
 import Model from '../Model/Model';
 import AllMovies from './AllMovies';
 import Loading from '../../Components/Loading';
