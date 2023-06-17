@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import EditIcon from '@mui/icons-material/Edit';
 import { db } from '../../firebase/config';
 import { useDocument } from "react-firebase-hooks/firestore";
 import { doc } from "firebase/firestore";
 import Loading from '../../Components/Loading';
 
-const TitleSection = ({ id ,titleInput}) => {
+const TitleSection = ({ id, titleInput }) => {
+    const inputElement = useRef(null);
+
     const [Movies, loading, error] = useDocument(doc(db, "Movies", id));
     if (loading) {
         return <Loading />
@@ -26,7 +28,10 @@ const TitleSection = ({ id ,titleInput}) => {
                         onChange={async (eo) => {
                             titleInput(eo);
                         }}
-                    /><EditIcon className='edit-icon' />
+                        ref={inputElement}
+                    /><i onClick={() => {
+                        inputElement.current.focus()
+                    }}><EditIcon className='edit-icon' /></i>
                 </h1>
             </div>
         );
