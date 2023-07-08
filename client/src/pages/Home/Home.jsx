@@ -67,7 +67,7 @@ const Home = () => {
                             </div>
                             <div>
                                 {/* Options {Filtered Data} */}
-                                <FilteredData />
+                                {/* <FilteredData /> */}
                                 {/* Show all Movies */}
                                 <AllMovies />
                                 {/* Add new Movie BTN */}

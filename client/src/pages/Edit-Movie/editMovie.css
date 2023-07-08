@@ -19,6 +19,7 @@
     text-align: center;
 }
 
+
 /* ==============================
 2-  Sub-Movie
 =================================*/
@@ -44,6 +45,8 @@
     width: 18px;
     accent-color: teal;
 }
+
+
 
 .sub-movie .complete {
     font-size: 17px;
@@ -106,6 +109,9 @@
       width: 9%;
       margin-right: 5PX;
   
+    }
+    .title{
+        width: 15px;
     }
   }
   

@@ -18,7 +18,7 @@ const TitleSection = ({ id, titleInput }) => {
     if (Movies) {
         const MovieName = Movies.data().Movie_Name;
         return (
-            <div>
+            <div> 
                 <h1>
                     <input
                         type='Text'

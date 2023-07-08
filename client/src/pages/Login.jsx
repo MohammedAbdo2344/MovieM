@@ -20,9 +20,7 @@ const Login = () => {
             <Loading />
         )
     }
-    if (error) {
-        return <h1>Error : <span>{error.message}</span></h1>
-    }
+    
     if (!user) {
         return (
             <div>
